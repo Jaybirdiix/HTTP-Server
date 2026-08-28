@@ -1,8 +1,0 @@
-
-*.class
-test_runs/
-.DS_Store
-.history/
-*.log
-__pycache__/
-*.pyc
