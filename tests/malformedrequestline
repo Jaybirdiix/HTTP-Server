@@ -1,0 +1,7 @@
+# EXPECT-STATUS: 400
+# EXPECT-HEADER: Content-Type: text/plain
+# EXPECT-BODY: Malformed request line
+
+GET
+Host: host1.cs.yale.edu
+

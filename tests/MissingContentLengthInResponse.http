@@ -1,0 +1,6 @@
+# EXPECT-STATUS: 200
+# EXPECT-HEADER: Transfer-Encoding: chunked
+
+GET /test-cgi.cgi HTTP/1.1
+Host: host1.cs.yale.edu
+

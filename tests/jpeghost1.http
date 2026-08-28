@@ -1,0 +1,8 @@
+# EXPECT-STATUS: 200
+# EXPECT-HEADER: Content-Type: image/jpeg
+
+GET /yale.jpg HTTP/1.1
+Host: host1.cs.yale.edu
+Accept: image/jpeg
+User-Agent: iphone
+

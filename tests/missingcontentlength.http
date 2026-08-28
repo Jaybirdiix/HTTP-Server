@@ -1,0 +1,9 @@
+# EXPECT-STATUS: 411
+# EXPECT-HEADER: Content-Type: text/plain
+# EXPECT-BODY: Content-Length
+
+POST /test-cgi.cgi HTTP/1.1
+Host: host1.cs.yale.edu
+Content-Type: application/x-www-form-urlencoded
+
+item1=A&item2=B

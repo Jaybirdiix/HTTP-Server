@@ -1,0 +1,9 @@
+# EXPECT-STATUS: 200
+# EXPECT-HEADER: Content-Type: text/html
+# EXPECT-BODY: <h>This is index_m.html</h>
+
+GET / HTTP/1.1
+Host: host1.cs.yale.edu
+Accept: text/html
+User-Agent: iphone
+
