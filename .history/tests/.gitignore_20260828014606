@@ -1,0 +1,17 @@
+.DS_Store/
+*.class
+test_runs/
+
+# Java build products
+*.class
+
+# macOS
+.DS_Store
+
+# Editor history
+.history/
+
+# Generated runtime logs
+*.log
+__pycache__/
+*.pyc
