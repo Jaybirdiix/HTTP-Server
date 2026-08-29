@@ -70,7 +70,7 @@ In blocking mode (threadpool), sockets are added to an `ExecutorService` of a si
 
 In selector mode, the accepted sockets are configured as non-blocking and are assigned round-robin across one or more `SelectorLoop`s.
 
-Each of these loops is responsible for maintaining the per-connection state. When a socket is ready to read or write to, the selector will receive a Java NIO readiness notification, allowing it to switch to the appropriate socket. Incoming bytes are buffered until a complete HTTP request is available, and the response bytes can be written across multiple occurences of a socket being ready to write.
+Each of these loops is responsible for maintaining the per-connection state. When a socket is ready to read or write to, the selector will receive a Java NIO readiness notification, allowing it to switch to the appropriate socket. Incoming bytes are buffered until a complete HTTP request is available, and the response bytes can be written across multiple occurrences of a socket being ready to write.
 
 Having one selector loop manage multiple concurrent connections means that we do not need to dedicate an entire blocking worker thread to each connection.
 
