@@ -26,9 +26,13 @@ class HttpRequestParser {
         }
 
         // this holds GET, /index.html, HTTP/1.1
-        String[] requestLine = lines[0].split(" ");
+        String[] requestLine = lines[0].split(" ", -1);
 
-        if (requestLine.length < 3) {
+        // avoid a space counting 
+        if (requestLine.length != 3 ||
+            requestLine[0].isEmpty() ||
+            requestLine[1].isEmpty() ||
+            requestLine[2].isEmpty()) {
             throw new HttpError(400, "Bad Request", "Malformed request line\n");
         }
 

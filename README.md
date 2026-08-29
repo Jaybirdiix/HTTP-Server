@@ -294,16 +294,35 @@ The `tests/` directory contains HTTP request cases covering behavior including:
 - path security
 - partial requests
 
+To compile and start the server:
+```shell
+javac -d out src/*.java && java -cp out Main -config examples/config/test-http.conf
+```
+Or the `run.sh` script. You can specify the config file here!
+
+To test:
+```shell
+# port specified in config
+telnet localhost 6789 
+GET /index.txt HTTP/1.1
+
+```
+Make sure to hit enter twice on your HTTP request.
+Alternatively:
+```shell
+curl -v -H "User-Agent: my-iPhone" http://localhost:6789/
+```
+
 To run the HTTP test suite:
 
 ```bash
-./test.sh ./tests/*
+./test_scripts/test.sh ./tests/*
 ```
 
 or a singular test:
 
 ```bash
-./test.sh ./tests/CGIGET.http
+./test_scripts/test.sh ./tests/304StillWorks.http
 ```
 
 ---

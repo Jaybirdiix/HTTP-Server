@@ -102,7 +102,7 @@ assert_header_present "$clen_h"   "Content-Length header present"
 assert_header_present "$lmod_h"   "Last-Modified header present"
 
 # Check Content-Length matches local file size if file exists in current dir tree
-if [[ -f "host1-root/index.html" ]]; then
+if [[ -f "examples/host1-root/index.html" ]]; then
   local_size=$(stat -f "%z" "host1-root/index.html")
   assert_int_eq "$clen_h" "$local_size" "Content-Length matches host1-root/index.html size"
 else
@@ -243,7 +243,7 @@ assert_code "$code_post" "200" "POST with Content-Length to CGI returns 200"
 say "Target 9b: POST CGI chunked upload (expect 200 if supported; 411 if not)"
 # This mirrors your earlier observation; accept 200 or 411.
 code_chunk=$(curl_code -X POST -H "Content-Type: application/x-www-form-urlencoded" \
-  -H "Transfer-Encoding: chunked" -d "@test-cgi-stdin.data" "${BASE}/test-cgi.cgi")
+  -H "Transfer-Encoding: chunked" -d "@examples/host1-root/test-cgi-stdin.data" "${BASE}/test-cgi.cgi")
 if [[ "$code_chunk" == "200" ]]; then
   pass "Chunked POST supported (200)"
 elif [[ "$code_chunk" == "411" ]]; then
