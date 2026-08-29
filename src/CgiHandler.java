@@ -39,7 +39,6 @@ final class CgiHandler {
 
     static byte[] buildChunkedResponseBytes(int statusCode, String statusMessage, String contentType, String lastModified, byte[] rawBodyBytes, boolean keepAlive) {
 
-        // read a page at a time?
         byte[] chunkedBodyBytes = encodeChunk(rawBodyBytes, 4096);
 
         String date = DateTimeFormatter.RFC_1123_DATE_TIME.format(ZonedDateTime.now(ZoneOffset.UTC));

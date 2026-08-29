@@ -28,8 +28,6 @@ public class SelectorLoop implements Runnable {
 
     // takes in a number (of threads) and the config
     // returns a list of selector loop objects
-    // why static?
-    // this is a funciton called startloops that returns a list of selectorloops and takes in a number of threads and the config
     // it also starts RUNNING all of these threads and that behavour is defined in run()
     public static List<SelectorLoop> startLoops(int n, HttpConfig config, ServerState serverState) throws IOException {
 
@@ -48,21 +46,17 @@ public class SelectorLoop implements Runnable {
 
     public void register(SocketChannel channel) {
         // add the channel to the concurrentlinked queue
-        // need to look into this more
         pendingRegistrations.add(channel);
         selector.wakeup();
     }
 
-    // what is this
     @Override
     public void run() {
         try {
             while (true) {
+                
                 // register newly accepted sockets
-                // use pendingRegistrations
-                // use ConnectionState
-
-                SocketChannel new_connection; // this is where we'll store a new connection
+                SocketChannel new_connection; // this is where we store a new connection
                 
                 // for each new connection waiting in pending registrations
                 while ((new_connection = pendingRegistrations.poll()) != null) {
@@ -200,7 +194,7 @@ public class SelectorLoop implements Runnable {
             state.keepAlive = false;
             responseBytes = RouterAndStatic.simpleText(e.code, e.reason, e.body, "close");
         } catch (Exception e) {
-            responseBytes = RouterAndStatic.simpleText(500, "Internal Server Error", "Server error\n", "close"); // NOT SURE IF SHOULD KEEP ALIVE HERE ??
+            responseBytes = RouterAndStatic.simpleText(500, "Internal Server Error", "Server error\n", "close"); // NOT SURE IF SHOULD KEEP ALIVE HERE 
         }
 
         state.writeBuffer = ByteBuffer.wrap(responseBytes);
@@ -231,9 +225,7 @@ public class SelectorLoop implements Runnable {
     }
 
     private static class ConnectionState {
-        // this number feels arbitrary, should look into it
         ByteBuffer readBuffer = ByteBuffer.allocate(8192);
-        // need to look into this functionality as well
         StringBuilder requestBytes = new StringBuilder();
         ByteBuffer writeBuffer;
         boolean keepAlive = true;

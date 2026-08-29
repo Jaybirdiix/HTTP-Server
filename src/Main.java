@@ -12,8 +12,7 @@ public class Main {
     public static void main(String[] args) throws Exception {
         // this is the default, will be overwritten if a file is provided
         // String configPath = "test-http.conf";
-        // default if none specified
-        String configPath = "test-http-threads.conf";
+        String configPath = "../examples/config/test-http.conf";
         // for each argument
         for (int i=0; i < args.length - 1; i++) {
             // if the argument is -config, then the path is the one coming after it
@@ -22,7 +21,6 @@ public class Main {
             }
         }
 
-        // this gets the configuration from the default file or whatever the user lists
         System.out.println("Using config file: " + configPath);
 
         HttpConfig config = ConfigParser.parse(configPath);
@@ -31,7 +29,7 @@ public class Main {
 
         // opens a server-side socket endpoint that can accept incoming TCP connections
         ServerSocketChannel server = ServerSocketChannel.open();
-        // binds the server socket to the local port sepcified in the config
+        
         // this is what makes the program start listening for incoming connections on that port
         server.bind(new InetSocketAddress(config.listenPort()));
         // blocking mode

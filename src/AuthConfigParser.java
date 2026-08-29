@@ -6,6 +6,8 @@ import java.util.Base64;
 import java.util.List;
 import java.util.Locale;
 
+// file parses authentication file
+
 public final class AuthConfigParser {
     
     public static final class AuthConfig {

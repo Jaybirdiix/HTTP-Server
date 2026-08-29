@@ -10,11 +10,8 @@ import java.util.concurrent.ExecutorService;
 
 
 public class Acceptor {
-    // variable can only be assigned once
     private final ServerSocketChannel server;
-    // declare list of selector loops
     private final List<SelectorLoop> loops;
-    // have an integer
     private final AtomicInteger roundRobin = new AtomicInteger(0);
     ServerState serverState;
 
@@ -22,9 +19,12 @@ public class Acceptor {
     private final ExecutorService threadPool;
     private final HttpConfig config;
 
+    // important settings
     int maxConnections = 5;
     int allowConnectionsAgain = 2;
 
+
+    // loops
     public Acceptor (ServerSocketChannel server, List<SelectorLoop> loops, ServerState serverState) {
         this.server = server;
         this.loops = loops;
@@ -33,6 +33,7 @@ public class Acceptor {
         this.config = null;
     }
 
+    // threads
     public Acceptor(ServerSocketChannel server, ExecutorService threadPool, HttpConfig config, ServerState serverState) {
 
         this.server = server;

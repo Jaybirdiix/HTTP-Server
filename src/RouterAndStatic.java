@@ -4,7 +4,7 @@ import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
-// literally all for formatting last modified
+// all for formatting last modified
 import java.nio.file.attribute.FileTime;
 import java.time.Instant;
 import java.time.ZoneOffset;
@@ -64,9 +64,7 @@ class RouterAndStatic {
 
             // set env vars
             // REQUEST_METHOD, QUERY_STRING, ETC
-
             // read stdout from CGI process
-
             // turn CGI output into a response
 
             if (CgiHandler.isCgiPath(urlPath)) {
@@ -115,7 +113,6 @@ class RouterAndStatic {
             }
 
             // method check for non cgi -----------------------------------------------
-
             // System.out.println("method: " + request.method());
 
             if (!(method.equals("GET"))) {
@@ -309,7 +306,6 @@ class RouterAndStatic {
 
 
     static byte[] simpleText(int code, String msg, String body, String keepAlive) {
-        // look into this
         byte[] body_bytes = body.getBytes(java.nio.charset.StandardCharsets.UTF_8);
 
         String headers =
