@@ -100,12 +100,12 @@ Listen 6789
 nSelectLoops 2
 
 <VirtualHost *:6789>
-DocumentRoot ./host1-root
+DocumentRoot ./examples/host1-root
 ServerName host1.cs.yale.edu
 </VirtualHost>
 
 <VirtualHost *:6789>
-DocumentRoot ./host2-root
+DocumentRoot ./examples/host2-root
 ServerName host2.cs.yale.edu
 </VirtualHost>
 ```
@@ -169,17 +169,22 @@ Upon receiving the shutdown command, the server stops accepting new connections.
 ## Repository Structure
 
 ```text
-src/                 HTTP server implementation
-tests/               HTTP request test cases
-host1-root/           example document root
-host2-root/           second virtual-host document root
-test-http.conf        selector-mode example configuration
-test-http-threads.conf
-                      thread-pool example configuration
-test.sh               HTTP test runner
-run_all_tests.sh      assignment/regression test runner
-concurrent.sh         concurrent-connection test helper
-run.sh                compile-and-run helper
+src/                    HTTP server implementation
+tests/                  HTTP request test cases
+
+test_scripts/
+  test.sh               HTTP request test runner
+  run_all_tests.sh      regression / integration tests
+  concurrent.sh         concurrent-connection test helper
+
+examples/
+  config/               selector and thread-pool configurations
+  host1-root/           example document root + CGI/auth fixtures
+  host2-root/           second virtual-host document root
+
+run.sh                  compile-and-run helper
+mainMap.png             architecture diagram
+serverInOut.png         request/response flow diagram
 ```
 
 The main implementation files are:

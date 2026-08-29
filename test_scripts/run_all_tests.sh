@@ -104,9 +104,9 @@ assert_header_present "$lmod_h"   "Last-Modified header present"
 # Check Content-Length matches local file size if file exists in current dir tree
 if [[ -f "examples/host1-root/index.html" ]]; then
   local_size=$(stat -f "%z" "examples/host1-root/index.html")
-  assert_int_eq "$clen_h" "$local_size" "Content-Length matches host1-root/index.html size"
+  assert_int_eq "$clen_h" "$local_size" "Content-Length matches examples/host1-root/index.html size"
 else
-  echo "Note: host1-root/index.html not found locally; skipping exact Content-Length match."
+  echo "Note: examples/host1-root/index.html not found locally; skipping exact Content-Length match."
 fi
 
 # Check Content-Type "looks right" for .html
