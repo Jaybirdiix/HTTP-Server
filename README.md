@@ -206,7 +206,7 @@ The main implementation files are:
 - `Acceptor.java`
   - This blocks on server.accept() and sends each connection either to a ThreadWorker or registers it with a SelectorLoop. It also sets a limit on the maximum number of connections.
 - `ServerState.java`
-  - I couldn't figure out how to place this in another file in a way that made sense so this is the entire file:
+  - This is the entire file:
 ```java
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -259,7 +259,7 @@ nSelectLoops 2
 ### Blocking thread-pool mode
 
 ```bash
-java -cp out Main -config test-http-threads.conf
+java -cp out Main -config examples/config/test-http-threads.conf
 ```
 
 uses:
@@ -329,7 +329,7 @@ or a singular test:
 
 ## Diagrams:
 
-These were made for my own understanding as I was designing / programming this project. They're not very fancy or polished, but they're pretty accurate so I thought it might be helpful to include them.
+These were made for my own understanding as I was designing / programming this project.
 
 ![Image](./mainMap.png)
 ![Image](./serverInOut.png)
