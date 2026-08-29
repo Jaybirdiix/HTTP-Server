@@ -12,6 +12,7 @@ public class Main {
     public static void main(String[] args) throws Exception {
         // this is the default, will be overwritten if a file is provided
         // String configPath = "test-http.conf";
+        // default if none specified
         String configPath = "test-http-threads.conf";
         // for each argument
         for (int i=0; i < args.length - 1; i++) {

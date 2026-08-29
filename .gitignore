@@ -1,0 +1,18 @@
+# Java build products
+*.class
+
+# macOS
+.DS_Store
+
+# Editor history
+.history/
+
+# Generated runtime logs
+*.log
+
+# Python
+__pycache__/
+*.pyc
+
+ignore
+ignore/*
